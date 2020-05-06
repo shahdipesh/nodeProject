@@ -2,6 +2,8 @@ var express = require ('express');
 
 var pool = require('./connection');
 
+console.log(pool);
+
 var app = express();
 
 
