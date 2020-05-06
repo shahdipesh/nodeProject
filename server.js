@@ -17,6 +17,15 @@ pool.query(
 
 })
 
+app.get('/allUser',(req,res)=>{
+    pool.query(
+        `SELECT * FROM messenger;`,(err,rows)=>{
+            if (err) throw err;
+            res.send (rows);
+        }
+    )
+})
+
 
 app.listen(3000,()=>{
     console.log ('listening on port 3000')
