@@ -1,5 +1,6 @@
 var express = require ('express');
 
+var pool = require('./connection');
 
 var app = express();
 
