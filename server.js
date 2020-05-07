@@ -1,9 +1,22 @@
 var express = require ('express');
-
 var pool = require('./connection');
 
 var app = express();
 app.use(express.json());
+
+//Using Query param
+app.get('/profile',(req,res)=>{
+    const id = req.query.id;
+    console.log('query:: ==>> ', req.query);
+    console.log('id:: ==>> ', req.query.id);
+    pool.query(
+        `SELECT * FROM messenger where idmessenger = ${id};`,(err,rows)=>{
+            if (err) throw err;
+            res.send (rows);
+        }
+    )
+}); 
+
 
 app.post('/createUser',(req,res)=>{
 var username = req.body.username;
@@ -15,7 +28,7 @@ pool.query(
     }
 )
 
-})
+});
 
 app.get('/allUser',(req,res)=>{
     pool.query(
@@ -24,7 +37,9 @@ app.get('/allUser',(req,res)=>{
             res.send (rows);
         }
     )
-})
+});
+
+
 
 
 app.listen(3000,()=>{
