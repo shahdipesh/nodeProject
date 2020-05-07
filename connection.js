@@ -2,6 +2,12 @@
 const mysql = require('mysql2');
  require ('dotenv').config();
 
+
+ console.log ("message1");
+ console.log ("message2");
+ console.log("message3");
+ 
+
 // Create the connection pool. The pool-specific settings are the defaults
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
